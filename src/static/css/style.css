@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lexend";
+}
+
+body {
+    width: 100vw;
+    height: 100%;
+    background: #cacaca;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+button {
+    border: none;
+}
+
+label {
+    font-size: .9rem;
+}
+
+input {
+    padding: .8rem;
+    border: 1px solid #bebebe;
+}
+
+.semibold {
+    font-weight: 500;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.container {
+    width: 800px;
+    height: 600px;
+    background: white;
+    padding: 2rem;
+    border-radius: .5rem;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7rem;
+}
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-header h1 {
+    font-weight: 700;
+}
+
+.btn {
+    text-align: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background: black;
+    border-radius: 2rem;
+
+    color: white;
+    cursor: pointer;
+    transition: all 250ms;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.gap-2 {
+    gap: .8rem;
+}
+
+.gap-1 {
+    gap: .6rem;
+}
+
+.mt-2 {
+    margin-top: .8rem;
+}
+
+.bg-stone-200 {
+    background: #dbdbdb;
+}
+
+.color-black {
+    color: black;
+}
+
+.text-lg {
+    font-size: .9rem;
+}
+
+.text-stone-600 {
+    color: #6b6b6b;
+}
+
+.text-sm {
+    font-size: .8rem;
+}
+
+.btn:hover {
+    opacity: .7;
+}
+
+.btn-danger {
+    background: red;
+}
+
+.btn-warning {
+    background: yellow;
+}
+
+.mt-5 {
+    margin-top: 2rem;
+}
+
+/* General Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+/* Table Header */
+.table thead tr {
+    background-color: #f8f9fa;
+    color: #212529;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Table Header & Data Cells */
+.table th,
+.table td {
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    text-align: center;
+    font-size: .8rem;
+}
+
+/* Alternate Row Color */
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover Effect */
+.table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.table td a,
+.table td button {
+    width: 3rem;
+    height: 3rem;
+    padding: .8rem;
+    border-radius: 1rem;
+}
+
+
+.picture {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+    background: rgb(184, 184, 184);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Create Profile</title>
+</head>
+
+<body>
+    <main class="container" style="height: 100%; width: 600px;">
+        <h1>Create Profile</h1>
+
+        <form class="w-full mt-2 flex flex-col gap-1" action="create-profile" method="POST">
+            <label for="name" class="semibold">Name</label>
+            <input type="text" name="name" id="name" placeholder="name" required>
+            <label for="email" class="semibold">Email</label>
+            <input type="email" name="email" id="email" placeholder="name@example.com" required>
+            <label for="role" class="semibold">Role</label>
+            <input type="text" name="role" id="role" placeholder="e.g Software Engineer" required>
+            <button class="btn semibold text-lg" type="submit">Submit</button>
+        </form>
+    </main>
+</body>
+
+</html>
