@@ -1,15 +1,21 @@
 from flask import Flask, request, redirect, render_template, g
-from lib.db import init_db, get_db 
+from lib.db import Database
+
+db_handler = Database()
 
 app = Flask(__name__, template_folder="templates")
 
 @app.before_request
 def before_request():
-    init_db()
+    g.db = db_handler.get_connection()
+
+@app.teardown_appcontext
+def teardown_db(exception):
+    db_handler.close_connection()
 
 @app.route("/", methods=["GET"])
 def home_route():
-    db = get_db()
+    db = g.db
     cursor = db.cursor()
     cursor.execute("SELECT * FROM users")
     users = cursor.fetchall()
@@ -21,8 +27,8 @@ def new_users():
     return render_template("new_users.html")
 
 @app.route("/edit-profile/<id>", methods=["GET"]) 
-def edit_user(id: str):
-    db = get_db()
+def edit_user(id):
+    db = g.db
     cursor = db.cursor()
     cursor.execute("SELECT * FROM users WHERE id = ?", (id,))
     user = cursor.fetchone()
@@ -30,15 +36,14 @@ def edit_user(id: str):
 
 @app.route("/create-profile", methods=["POST"])
 def create_profile():
-    # Get form data safely
     name = request.form.get("name", "").strip()
     email = request.form.get("email", "").strip()
     role = request.form.get("role", "").strip()
 
-    db = get_db()
+    db = g.db
     cursor = db.cursor()
 
-    if name == "" or email == "" or role == "":
+    if not name or not email or not role:
         return redirect("/create-profile")
 
     cursor.execute('''
@@ -48,10 +53,11 @@ def create_profile():
     db.commit()
     return redirect("/")
 
+
 @app.route("/update-user/<id>", methods=["PUT"])
-def update_user(id : str):
-    user = request.get_json()
-    db = get_db()
+def update_user(id: str):
+    user = request.get_json() 
+    db = g.db
     cursor = db.cursor()
 
     cursor.execute('''
@@ -62,13 +68,14 @@ def update_user(id : str):
     return redirect("/")
 
 @app.route("/delete-user/<id>", methods=["DELETE"])
-def delete_mail(id: str):
-    db = get_db()
+def delete_user(id: str):
+    db = g.db
     cursor = db.cursor()
 
     cursor.execute("DELETE FROM users WHERE id = ?", (id,))
     db.commit()
     return redirect("/")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
